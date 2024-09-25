@@ -1,0 +1,38 @@
+<div style="height: 75vh;margin-top: 50px;">
+
+    <h1 class="text-center">Users</h1>
+
+    <table class="container table table-borderd">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngIf="!users">
+                <td class="text-center" colspan="2">No contacts found !</td>
+            </tr>
+            <tr *ngFor="let user of users">
+                <td>{{user.name}}</td>
+                <td>{{user.age}}</td>
+
+                <td>
+                    <button class="btn btn-outline-primary rounded-pill btn-sm"
+                        (click)="updateUser(user.id)">Edit</button> |
+                    <!-- <button class="btn btn-outline-info rounded-pill btn-sm"
+                    (click)="contactDetails(contact.contactId)">Details</button> | -->
+                    <button class="btn btn-outline-danger rounded-pill btn-sm"
+                        (click)="confirmDelete(user.id)">Delete</button>
+
+
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <div class="d-flex align-item-center justify-content-center mb-5">
+        <a class="btn btn-secondary" [routerLink]="['/add-user']" routerLinkActive="router-link-active"> Add</a>
+    </div>
+</div>

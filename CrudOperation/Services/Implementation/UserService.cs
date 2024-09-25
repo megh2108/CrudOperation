@@ -27,7 +27,7 @@ namespace CrudOperation.Services.Implementation
                 {
                     userDtos.Add(new UserDto()
                     {
-                       
+
                         Id = user.Id,
                         Name = user.Name,
                         Age = user.Age,
@@ -44,6 +44,34 @@ namespace CrudOperation.Services.Implementation
             }
             return response;
         }
+
+        public ServiceResponse<UserDto> GetUserById(int id)
+        {
+            var response = new ServiceResponse<UserDto>();
+            var user = _userRepository.GetUserById(id);
+
+            if (user != null)
+            {
+
+                var userDto = new UserDto()
+                {
+                    Id = user.Id,
+                    Name = user.Name,
+                    Age = user.Age
+                };
+
+                response.Data = userDto;
+
+            }
+            else
+            {
+                response.Success = false;
+                response.Message = "No record found !.";
+            }
+
+            return response;
+        }
+
 
         public ServiceResponse<string> AddUser(AddUserDto userDto)
         {
@@ -80,7 +108,7 @@ namespace CrudOperation.Services.Implementation
         {
             var response = new ServiceResponse<string>();
 
-            if (_userRepository.UserExists(userDto.Id,userDto.Name))
+            if (_userRepository.UserExists(userDto.Id, userDto.Name))
             {
                 response.Success = false;
                 response.Message = "User already exists.";

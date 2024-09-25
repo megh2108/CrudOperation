@@ -18,6 +18,13 @@ namespace CrudOperation.Data.Implementation
             return users;
         }
 
+        public SampleTable GetUserById(int id)
+        {
+            var user = _appDbContext.SampleTables.FirstOrDefault(c => c.Id == id);
+
+            return user;
+        }
+
         public bool AddUser(SampleTable user)
         {
             var result = false;

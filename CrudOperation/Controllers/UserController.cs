@@ -27,6 +27,19 @@ namespace CrudOperation.Controllers
             return Ok(response);
         }
 
+        [HttpGet("GetUserById/{id}")]
+        public IActionResult GetUserById(int id)
+        {
+            var response = _userService.GetUserById(id);
+
+            if (!response.Success)
+            {
+                return NotFound(response);
+            }
+
+            return Ok(response);
+        }
+
         [HttpPost("AddUser")]
         public IActionResult AddUser(AddUserDto userDto)
         {

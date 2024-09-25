@@ -6,6 +6,7 @@ namespace CrudOperation.Data.Contract
     {
          IEnumerable<SampleTable> GetAllUsers();
 
+        SampleTable GetUserById(int id);
          bool AddUser(SampleTable user);
 
         bool UpdateUser(SampleTable user);

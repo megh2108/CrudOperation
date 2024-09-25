@@ -1,0 +1,35 @@
+<div class="container ">
+    <div class="card mb-3">
+        <div class="card-header">
+            <h2 class="text-center">Update User</h2>
+        </div>
+        <div class="card-body">
+            <div class="position-relative">
+
+                <form #updateUserForm="ngForm" class="need-validation" (ngSubmit)="onSubmit(updateUserForm)">
+                    <div class="row">
+                        <input type="hidden" id="id" name="id" [(ngModel)]="user.id">
+
+                        <div class="col-lg-4 mb-3">
+                            <label class="form-label" for="name">Name:</label>
+                            <input type="text" class="form-control" id="name" name="name" [(ngModel)]="user.name">
+                        </div>
+                        <div class="col-lg-4 mb-3">
+                            <label class="form-label" for="age">Age:</label>
+                            <input type="number" class="form-control" id="age" name="age" [(ngModel)]="user.age">
+                        </div>
+
+
+
+                    </div>
+                    <button type="submit" class="btn btn-secondary add justify-content-center m-3">Update User</button>
+                    <a class="btn btn-secondary add justify-content-center m-3" [routerLink]="['/user-list']"
+                        routerLinkActive="router-link-active">Back to List</a>
+                </form>
+
+                <!-- </div> -->
+            </div>
+        </div>
+    </div>
+
+</div>
